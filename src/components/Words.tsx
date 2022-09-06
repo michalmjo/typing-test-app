@@ -1,17 +1,23 @@
-import React, { useState, useRef } from "react";
-import Word from "./Word";
+import React, { useState, useRef, useEffect } from "react";
+// import Word from "./Word";
+import MemoizedValue from "./Word";
 
 const getWords = () =>
   `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum aspernatur ducimus voluptatum pariatur qui minus magnam deleniti eaque assumenda ab vitae, obcaecati quod nemo fuga dolore itaque temporibus ullam perspiciatis!`.split(
     " "
   );
 // .sort(() => (Math.random() > 0.5 ? 1 : -1));
-
 const Words = () => {
   const [typingTextInput, setTypingTextInput] = useState("");
   const [activeTextIndex, setActiveTextIndex] = useState(0);
   const [correctWords, setCorrectWords] = useState<any>([]);
   const words = useRef(getWords());
+
+  const testMemo = useRef(0);
+
+  useEffect(() => {
+    testMemo.current += 1;
+  });
 
   const processInput = (value: string) => {
     if (value.endsWith(" ")) {
@@ -36,10 +42,11 @@ const Words = () => {
       <p>
         {words.current.map((word, index) => {
           return (
-            <Word
+            <MemoizedValue
               text={word}
               activeText={index === activeTextIndex}
               correct={correctWords[index]}
+              memo={testMemo}
             />
           );
         })}
