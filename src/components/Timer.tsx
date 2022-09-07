@@ -2,25 +2,31 @@ import React, { useEffect, useState } from "react";
 
 interface typingTimer {
   startCounting: boolean;
+  correctWords: any;
 }
-const Timer = ({ startCounting }: typingTimer) => {
+const Timer = ({ startCounting, correctWords }: typingTimer) => {
   console.log(startCounting);
-  const [speed, setSpeed] = useState(0);
+  const [timeElepsed, setTimeElapsed] = useState(0);
+  console.log(`to jest boolien tablicy z filter ${correctWords}`);
 
   useEffect(() => {
-    let indexInterval = 0;
+    console.log(startCounting);
+    let indexInterval: ReturnType<typeof setInterval>;
     if (startCounting) {
-      setInterval(() => {
-        setSpeed((prev) => prev + 1);
+      console.log("Counting sie wywoluje");
+      indexInterval = setInterval(() => {
+        setTimeElapsed((prev) => prev + 1);
       }, 1000);
     }
-    return clearInterval(indexInterval);
+    return () => clearInterval(indexInterval);
   }, [startCounting]);
+
+  const minutes = timeElepsed / 60;
 
   return (
     <div className="speedContainer">
-      <p>Speed {speed}</p>
-      <button>Start</button>
+      <p>Time: {timeElepsed}</p>
+      <p>Speed: {`${(correctWords / minutes || 0).toFixed(0)} WPM`}</p>
     </div>
   );
 };

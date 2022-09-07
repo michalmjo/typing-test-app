@@ -5,12 +5,20 @@ import Timer from "./Timer";
 
 const App = () => {
   const [startCounting, setStartCounting] = useState<boolean>(false);
+  const [correctWords, setCorrectWords] = useState<[]>([]);
 
   return (
     <div className="wrapper">
       <h1>Typing test</h1>
-      <Words changeCounting={setStartCounting} />
-      <Timer startCounting={startCounting} />
+      <Words
+        changeCounting={setStartCounting}
+        counting={startCounting}
+        getCorrectWords={setCorrectWords}
+      />
+      <Timer
+        startCounting={startCounting}
+        correctWords={correctWords.filter(Boolean).length}
+      />
     </div>
   );
 };
