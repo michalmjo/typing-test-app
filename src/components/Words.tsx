@@ -24,12 +24,6 @@ const Words = ({
 
   const words = useRef(getWords());
 
-  const testMemo = useRef(0);
-
-  useEffect(() => {
-    testMemo.current += 1;
-  });
-
   const processInput = (value: string) => {
     if (activeTextIndex === words.current.length) return;
     if (!counting) {
@@ -69,7 +63,6 @@ const Words = ({
               text={word}
               activeText={index === activeTextIndex}
               correct={correctWords[index]}
-              memo={testMemo}
             />
           );
         })}
