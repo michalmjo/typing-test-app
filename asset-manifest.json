@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/typing-test-app/static/css/main.323768e8.css",
+    "main.js": "/typing-test-app/static/js/main.31947832.js",
+    "index.html": "/typing-test-app/index.html",
+    "main.323768e8.css.map": "/typing-test-app/static/css/main.323768e8.css.map",
+    "main.31947832.js.map": "/typing-test-app/static/js/main.31947832.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.323768e8.css",
+    "static/js/main.31947832.js"
+  ]
+}
