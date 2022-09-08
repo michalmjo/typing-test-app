@@ -1,0 +1,10 @@
+@import "_Variables.scss";
+
+
+.speedContainer {
+    display: flex;
+    justify-content: space-around;
+    font-size: 3rem;
+    @include glassBackground;
+    padding: 10px 20px;
+}

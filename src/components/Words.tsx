@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 
 import MemoizedValue from "./Word";
 
@@ -9,7 +9,7 @@ interface wordsChangeStatus {
 }
 
 const getWords = () =>
-  `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum aspernatur ducimus voluptatum pariatur qui minus magnam deleniti eaque assumenda ab vitae, obcaecati quod nemo fuga dolore itaque temporibus ullam perspiciatis!`.split(
+  `Chapter too parties its letters nor. Cheerful but whatever ladyship disposed yet judgment. Lasted answer oppose to ye months no esteem. Branched is on an ecstatic directly it. Put off continue you denoting returned juvenile. Looked person sister result mr to. Replied demands charmed do viewing ye colonel to so. Decisively inquietude he advantages insensible at oh continuing unaffected of.`.split(
     " "
   );
 // .sort(() => (Math.random() > 0.5 ? 1 : -1));
@@ -36,7 +36,7 @@ const Words = ({
     if (value.endsWith(" ")) {
       if (activeTextIndex === words.current.length - 1) {
         changeCounting(false);
-        setTypingTextInput("You're Done !");
+        setTypingTextInput("You are done !");
       } else {
         setTypingTextInput("");
       }
@@ -54,8 +54,8 @@ const Words = ({
   };
 
   return (
-    <div>
-      <p>
+    <div className="wordsWrapper">
+      <div className="wordsWrapper__text">
         {words.current.map((word, index) => {
           return (
             <MemoizedValue
@@ -66,12 +66,14 @@ const Words = ({
             />
           );
         })}
-      </p>
-      <input
-        type="text"
-        value={typingTextInput}
-        onChange={(e) => processInput(e.target.value)}
-      />
+      </div>
+      <div className="wordsWrapper__input">
+        <input
+          type="text"
+          value={typingTextInput}
+          onChange={(e) => processInput(e.target.value)}
+        />
+      </div>
     </div>
   );
 };

@@ -15,10 +15,7 @@ const App = () => {
         counting={startCounting}
         getCorrectWords={setCorrectWords}
       />
-      <Timer
-        startCounting={startCounting}
-        correctWords={correctWords.filter(Boolean).length}
-      />
+      <Timer startCounting={startCounting} correctWords={correctWords} />
     </div>
   );
 };

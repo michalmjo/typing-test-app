@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "../style/Timer.scss";
 
 interface typingTimer {
   startCounting: boolean;
@@ -7,7 +8,9 @@ interface typingTimer {
 const Timer = ({ startCounting, correctWords }: typingTimer) => {
   console.log(startCounting);
   const [timeElepsed, setTimeElapsed] = useState(0);
-  console.log(`to jest boolien tablicy z filter ${correctWords}`);
+  const boolenCorrectWords = correctWords.filter(Boolean).length;
+
+  const allMistakes = correctWords.filter((item: boolean) => !item);
 
   useEffect(() => {
     console.log(startCounting);
@@ -25,8 +28,10 @@ const Timer = ({ startCounting, correctWords }: typingTimer) => {
 
   return (
     <div className="speedContainer">
-      <p>Time: {timeElepsed}</p>
-      <p>Speed: {`${(correctWords / minutes || 0).toFixed(0)} WPM`}</p>
+      <p>Time: {timeElepsed} sec</p>
+      <p>Speed: {`${(boolenCorrectWords / minutes || 0).toFixed(0)} WPM`}</p>
+      <p>Mistakes: {`${allMistakes.length}`}</p>
+      <p>Correct: {boolenCorrectWords}</p>
     </div>
   );
 };
